@@ -1,57 +1,16 @@
 <!-- App.vue -->
 <template>
   <v-app>
-    <!-- App Bar -->
-    <v-app-bar 
-      app 
-      :elevation="2"
-      class="px-3"
-    >
-      <!-- Mobile menu button -->
-      <v-app-bar-nav-icon
-        @click="drawer = !drawer"
-        class="d-flex d-md-none"
-      ></v-app-bar-nav-icon>
-
-      <!-- App title/logo -->
-      <v-app-bar-title>EMA</v-app-bar-title>
-
-      <!-- Desktop navigation -->
-      <v-container class="d-none d-md-flex align-center">
-        <v-row justify="end">
-          <v-col cols="auto" v-for="item in menuItems" :key="item.path">
-            <v-btn
-              :to="item.path"
-              variant="text"
-              :ripple="false"
-            >
-              {{ item.title }}
-            </v-btn>
-          </v-col>
-        </v-row>
-      </v-container>
-    </v-app-bar>
-
-    <!-- Mobile navigation drawer -->
-    <v-navigation-drawer
-      v-model="drawer"
-      temporary
-      class="d-md-none"
-    >
-      <v-list>
-        <v-list-item
-          v-for="item in menuItems"
-          :key="item.path"
-          :to="item.path"
-          :title="item.title"
-          :prepend-icon="item.icon"
-        ></v-list-item>
-      </v-list>
-    </v-navigation-drawer>
+    <!-- Custom Header - Hidden on landing page -->
+    <navigation-header />
 
     <!-- Main content -->
     <v-main>
-      <v-container fluid class="fill-height pa-0">
+      <v-container 
+        fluid 
+        class="pa-0 fill-height main-container"
+        :style="{ backgroundColor: '#FAD5B5' }"
+      >
         <router-view v-slot="{ Component }">
           <v-fade-transition mode="out-in">
             <component :is="Component" />
@@ -60,8 +19,61 @@
       </v-container>
     </v-main>
 
-    <!-- Bottom Navigation for Mobile -->
-    <navigation-footer class="d-md-none" />
+    <!-- Custom Navigation Footer - Hidden on landing page -->
+    <navigation-footer v-if="!isLandingPage" />
   </v-app>
 </template>
 
+<script setup>
+import { computed } from 'vue'
+import { useRoute } from 'vue-router'
+import NavigationFooter from './components/NavigationFooter.vue'
+import NavigationHeader from './components/NavigationHeader.vue'
+
+const route = useRoute()
+
+// Check if we're on the landing page
+const isLandingPage = computed(() => {
+  return route.path === '/'
+})
+</script>
+
+<style>
+/* Global styles */
+:root {
+  --footer-height: 64px;
+  --header-height: 56px;
+  --safe-area-bottom: env(safe-area-inset-bottom, 0px);
+  --safe-area-top: env(safe-area-inset-top, 0px);
+}
+
+.v-application {
+  background-color: #FAD5B5 !important;
+}
+
+.main-container {
+  /* Adjust padding based on whether we're on the landing page */
+  padding-bottom: v-bind(isLandingPage ? '0px' : 'calc(var(--footer-height) + var(--safe-area-bottom))') !important;
+  padding-top: v-bind(isLandingPage ? '0px' : 'calc(var(--header-height) + var(--safe-area-top))') !important;
+}
+
+/* Remove default button styles */
+.v-btn {
+  text-transform: none !important;
+  letter-spacing: normal !important;
+}
+
+/* Custom theme colors */
+.v-theme--light {
+  --v-theme-primary: 198, 155, 155;
+  --v-theme-surface: 250, 213, 181;
+}
+
+/* For the Agbalumo font */
+@font-face {
+  font-family: 'Agbalumo';
+  src: url('/fonts/Agbalumo-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+</style>
