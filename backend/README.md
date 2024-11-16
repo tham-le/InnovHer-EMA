@@ -1,5 +1,25 @@
 # Health Tracking API Documentation
 
+1. Users
+   - POST   /api/users                               # Create user
+   - GET    /api/users/{user_id}                    # Get user details
+   - PUT    /api/users/{user_id}                    # Update user
+   - DELETE /api/users/{user_id}                    # Delete user
+
+2. Pain History
+   - POST   /api/users/{user_id}/pain-history       # Add pain record
+   - GET    /api/users/{user_id}/pain-history       # Get pain history
+
+3. Mood History
+   - POST   /api/users/{user_id}/mood-history       # Add mood record
+   - GET    /api/users/{user_id}/mood-history       # Get mood history
+
+4. Recipes
+   - GET    /api/recipes                            # Get all recipes
+   - GET    /api/recipes/{recipe_id}                # Get specific recipe
+
+
+
 A Flask-based REST API for managing user health data, including pain and mood tracking, and recipe management.
 
 ## Setup

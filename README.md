@@ -113,11 +113,6 @@ The frontend application will be available at `http://localhost:5173`
 * `GET /api/recipes` - List all recipes
 * `GET /api/recipes/{recipe_id}` - Get specific recipe details
 
-### Favorite Recipes
-* `POST /api/users/{user_id}/favorite-recipes` - Add recipe to favorites
-* `GET /api/users/{user_id}/favorite-recipes` - List user's favorite recipes
-* `DELETE /api/users/{user_id}/favorite-recipes/{recipe_id}` - Remove recipe from favorites
-
 ## Development
 
 ### Backend Dependencies

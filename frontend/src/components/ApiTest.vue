@@ -117,6 +117,52 @@
       </v-col>
     </v-row>
 
+<!-- Meal Planning Section -->
+<v-col cols="12">
+  <v-card>
+    <v-card-title>Weekly Meal Plan</v-card-title>
+    <v-card-text>
+      <v-btn-group>
+        <v-btn 
+          color="primary" 
+          @click="generateMealPlan" 
+          :disabled="!userId"
+        >
+          Generate New Meal Plan
+        </v-btn>
+        <v-btn 
+          color="info" 
+          @click="getMealPlan" 
+          :disabled="!userId"
+        >
+          View Current Plan
+        </v-btn>
+      </v-btn-group>
+
+      <v-table v-if="mealPlan.length > 0" class="mt-4">
+        <thead>
+          <tr>
+            <th>Day</th>
+            <th>Breakfast</th>
+            <th>Lunch</th>
+            <th>Dinner</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr v-for="day in mealPlan" :key="day.day_of_week">
+            <td>{{ getDayName(day.day_of_week) }}</td>
+            <td>{{ day.breakfast?.name || 'Not planned' }}</td>
+            <td>{{ day.lunch?.name || 'Not planned' }}</td>
+            <td>{{ day.dinner?.name || 'Not planned' }}</td>
+          </tr>
+        </tbody>
+      </v-table>
+    </v-card-text>
+  </v-card>
+</v-col>
+
+    
+
     <!-- Response Section -->
     <v-row>
       <v-col cols="12">
@@ -177,7 +223,7 @@ async function makeRequest(url, method = 'GET', body = null) {
 
 // User Management
 const createUser = () => makeRequest('/users', 'POST', { name: userName.value })
-const getUser = () => makeRequest(`/users/${userId.value}`)
+const getUser = () => makeRequest(`/users/${userId.value}`, 'GET')
 const updateUser = () => makeRequest(`/users/${userId.value}`, 'PUT', { name: userName.value })
 const deleteUser = () => makeRequest(`/users/${userId.value}`, 'DELETE')
 
@@ -191,18 +237,37 @@ const getPainHistory = () => makeRequest(`/users/${userId.value}/pain-history`)
 // Mood History
 const recordMood = () => makeRequest(`/users/${userId.value}/mood-history`, 'POST', {
   mood: moodLevel.value,
-  notes: moodNotes.value
+  mood_description: mood_description.value
 })
 const getMoodHistory = () => makeRequest(`/users/${userId.value}/mood-history`)
 
 // Recipe Management
 const getAllRecipes = () => makeRequest('/recipes')
 const getRecipe = () => makeRequest(`/recipes/${recipeId.value}`)
-const addFavoriteRecipe = () => makeRequest(`/users/${userId.value}/favorite-recipes`, 'POST', {
-  recipe_id: recipeId.value
-})
-const getFavoriteRecipes = () => makeRequest(`/users/${userId.value}/favorite-recipes`)
-const removeFavoriteRecipe = () => makeRequest(`/users/${userId.value}/favorite-recipes/${recipeId.value}`, 'DELETE')
+
+
+const mealPlan = ref([])
+
+const getDayName = (dayOfWeek) => {
+  const days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
+  return days[dayOfWeek]
+}
+
+// Meal Planning
+const generateMealPlan = () => makeRequest(`/users/${userId.value}/meal-plan`, 'POST')
+  .then(response => {
+    if (response?.meal_plan) {
+      mealPlan.value = response.meal_plan
+    }
+  })
+
+const getMealPlan = () => makeRequest(`/users/${userId.value}/meal-plan`)
+  .then(response => {
+    if (response) {
+      mealPlan.value = response
+    }
+  })
+
 </script>
 
 <style scoped>
