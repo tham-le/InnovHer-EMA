@@ -15,4 +15,10 @@ export default defineConfig({
   optimizeDeps: {
     include: ['vue', 'vuetify']
   }
+
+   build: {
+    rollupOptions: {
+      external: ['vue-chartjs']
+    }
+  }
 })
