@@ -71,7 +71,7 @@
           <v-col cols="12" sm="10" md="8">
             <v-card>
               <v-card-title class="d-flex justify-space-between">
-                <span>Plan des repas</span>
+                <span>Repas d'aujourd'hui</span>
                 <span class="text-subtitle-1">
                   {{ formatFullDate(selectedDate) }}
                 </span>
@@ -89,10 +89,6 @@
                     <v-card-text class="text-center pa-2">
                       <div class="text-subtitle-2">{{ formatDay(day.date) }}</div>
                       <div class="text-h6">{{ formatDate(day.date) }}</div>
-                      <div class="mt-1">
-                        <v-icon v-if="day.meals" small color="success">mdi-check</v-icon>
-                        <v-icon v-else small color="grey">mdi-minus</v-icon>
-                      </div>
                     </v-card-text>
                   </v-card>
                 </v-col>
