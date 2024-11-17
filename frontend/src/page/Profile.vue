@@ -239,7 +239,7 @@
     try {
       // For testing, using user ID 1. In production, this should come from auth
       const userId = 1
-      const response = await fetch(`${baseUrl}/users/${userId}`)
+      const response = await fetch(`https://2p0sciic95.execute-api.eu-central-1.amazonaws.com/v1_0/getUser`)
       const data = await response.json()
       
       if (response.ok) {

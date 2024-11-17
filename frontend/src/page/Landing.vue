@@ -119,7 +119,7 @@ const iconSize = computed(() => {
 // Get user data from API
 const getUser = async (userId) => {
   try {
-    const response = await fetch(`${baseUrl}/users/${userId}`)
+    const response = await fetch(`https://2p0sciic95.execute-api.eu-central-1.amazonaws.com/v1_0/getUser`)
     if (!response.ok) {
       throw new Error('Failed to fetch user data')
     }
