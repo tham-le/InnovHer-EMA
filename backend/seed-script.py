@@ -49,383 +49,701 @@ def seed_database():
         
         print("Creating sample recipes...")
         recipes = [
-                Recipe(
-                    name="Tartare de saumon et avocat",
-                    ingredients=json.dumps([
-                        {
-                            "quantity": 150,
-                            "unit": "g",
-                            "item": "saumon frais",
-                            "details": "(surgelé puis décongelé)"
-                        },
-                        {
-                            "quantity": 1,
-                            "unit": "",
-                            "item": "avocat",
-                            "details": ""
-                        },
-                        {
-                            "quantity": 1,
-                            "unit": "cuillère à soupe",
-                            "item": "jus de citron",
-                            "details": ""
-                        },
-                        {
-                            "quantity": 1,
-                            "unit": "cuillère à soupe",
-                            "item": "huile d'olive",
-                            "details": ""
-                        },
-                        {
-                            "quantity": None,
-                            "unit": "",
-                            "item": "sel",
-                            "details": ""
-                        },
-                        {
-                            "quantity": None,
-                            "unit": "",
-                            "item": "poivre",
-                            "details": ""
-                        },
-                        {
-                            "quantity": None,
-                            "unit": "",
-                            "item": "aneth frais",
-                            "details": ""
-                        }
-                    ]),
-                    instructions=json.dumps([
-                        "Couper le saumon en petits dés.",
-                        "Couper l'avocat en dés et mélanger avec le jus de citron.",
-                        "Ajouter le saumon, l'huile d'olive, le sel, le poivre et l'aneth.",
-                        "Mélanger doucement et servir frais."
-                    ]),
-                    image_url="tartare.jpg",
-                    type="lunch"
-                ),
-                Recipe(
-                    name="Anti-Inflammatory Smoothie",
-                    ingredients=json.dumps([
-                        {
-                            "quantity": 1,
-                            "unit": "cup",
-                            "item": "blueberries",
-                            "details": "fresh or frozen"
-                        },
-                        {
-                            "quantity": 1,
-                            "unit": "",
-                            "item": "banana",
-                            "details": "ripe"
-                        },
-                        {
-                            "quantity": 1,
-                            "unit": "tsp",
-                            "item": "turmeric",
-                            "details": "ground"
-                        },
-                        {
-                            "quantity": 1,
-                            "unit": "cup",
-                            "item": "almond milk",
-                            "details": ""
-                        }
-                    ]),
-                    instructions=json.dumps([
-                        "Add all ingredients to blender.",
-                        "Blend until smooth.",
-                        "Serve immediately."
-                    ]),
-                    image_url="smoothie.jpg",
-                    type="breakfast"
-                ),
-                Recipe(
-                    name="Quinoa Bowl with Roasted Vegetables",
-                    ingredients=json.dumps([
-                        {
-                            "quantity": 100,
-                            "unit": "g",
-                            "item": "quinoa",
-                            "details": "rinsed"
-                        },
-                        {
-                            "quantity": 200,
-                            "unit": "g",
-                            "item": "mixed vegetables",
-                            "details": "(butternut squash, zucchini, carrots)"
-                        },
-                        {
-                            "quantity": 2,
-                            "unit": "tablespoon",
-                            "item": "olive oil",
-                            "details": "extra virgin"
-                        },
-                        {
-                            "quantity": 50,
-                            "unit": "g",
-                            "item": "pumpkin seeds",
-                            "details": "raw"
-                        },
-                        {
-                            "quantity": None,
-                            "unit": "",
-                            "item": "fresh herbs",
-                            "details": "(thyme, rosemary)"
-                        }
-                    ]),
-                    instructions=json.dumps([
-                        "Rinse quinoa thoroughly and cook in water until fluffy",
-                        "Cut vegetables into similar-sized pieces",
-                        "Toss vegetables with 1 tbsp olive oil and herbs",
-                        "Gently roast vegetables at low temperature (150°C) for 25-30 minutes",
-                        "Combine quinoa and vegetables, drizzle with remaining olive oil",
-                        "Top with pumpkin seeds and serve"
-                    ]),
-                    image_url="quinoa_bowl.jpg",
-                    type="lunch"
-                ),
-                Recipe(
-                    name="Wild-Caught Fish with Fresh Herbs",
-                    ingredients=json.dumps([
-                        {
-                            "quantity": 200,
-                            "unit": "g",
-                            "item": "wild sea bass",
-                            "details": "fresh fillet"
-                        },
-                        {
-                            "quantity": 1,
-                            "unit": "bunch",
-                            "item": "fresh parsley",
-                            "details": ""
-                        },
-                        {
-                            "quantity": 1,
-                            "unit": "lemon",
-                            "item": "organic lemon",
-                            "details": "juice and zest"
-                        },
-                        {
-                            "quantity": 2,
-                            "unit": "tablespoon",
-                            "item": "olive oil",
-                            "details": "extra virgin"
-                        },
-                        {
-                            "quantity": 200,
-                            "unit": "g",
-                            "item": "green beans",
-                            "details": "fresh"
-                        }
-                    ]),
-                    instructions=json.dumps([
-                        "Season fish with herbs, lemon zest, and olive oil",
-                        "Steam green beans until tender-crisp",
-                        "Gently cook fish at low temperature",
-                        "Serve with steamed green beans and lemon juice"
-                    ]),
-                    image_url="fish.jpg",
-                    type="dinner"
-                ),
-                Recipe(
-                    name="Berry and Almond Breakfast Bowl",
-                    ingredients=json.dumps([
-                        {
-                            "quantity": 150,
-                            "unit": "g",
-                            "item": "mixed berries",
-                            "details": "fresh or frozen"
-                        },
-                        {
-                            "quantity": 30,
-                            "unit": "g",
-                            "item": "almonds",
-                            "details": "raw"
-                        },
-                        {
-                            "quantity": 1,
-                            "unit": "tablespoon",
-                            "item": "honey",
-                            "details": "raw, optional"
-                        },
-                        {
-                            "quantity": 200,
-                            "unit": "ml",
-                            "item": "almond milk",
-                            "details": "unsweetened"
-                        }
-                    ]),
-                    instructions=json.dumps([
-                        "Combine berries in a bowl",
-                        "Roughly chop almonds",
-                        "Pour almond milk over berries",
-                        "Top with chopped almonds and honey if desired"
-                    ]),
-                    image_url="berry_bowl.jpg",
-                    type="breakfast"
-                ),
-                Recipe(
-                    name="Sweet Potato and Avocado Salad",
-                    ingredients=json.dumps([
-                        {
-                            "quantity": 1,
-                            "unit": "large",
-                            "item": "sweet potato",
-                            "details": "peeled and cubed"
-                        },
-                        {
-                            "quantity": 1,
-                            "unit": "",
-                            "item": "avocado",
-                            "details": "ripe"
-                        },
-                        {
-                            "quantity": 100,
-                            "unit": "g",
-                            "item": "mixed greens",
-                            "details": "fresh"
-                        },
-                        {
-                            "quantity": 2,
-                            "unit": "tablespoon",
-                            "item": "olive oil",
-                            "details": "extra virgin"
-                        },
-                        {
-                            "quantity": 1,
-                            "unit": "tablespoon",
-                            "item": "lemon juice",
-                            "details": "fresh"
-                        }
-                    ]),
-                    instructions=json.dumps([
-                        "Steam sweet potato cubes until tender",
-                        "Slice avocado",
-                        "Arrange mixed greens on plate",
-                        "Top with sweet potato and avocado",
-                        "Drizzle with olive oil and lemon juice"
-                    ]),
-                    image_url="sweet_potato_salad.jpg",
-                    type="lunch"
-                ),
-                Recipe(
-                    name="Herb-Roasted Turkey with Vegetables",
-                    ingredients=json.dumps([
-                        {
-                            "quantity": 200,
-                            "unit": "g",
-                            "item": "turkey breast",
-                            "details": "organic"
-                        },
-                        {
-                            "quantity": 300,
-                            "unit": "g",
-                            "item": "mixed root vegetables",
-                            "details": "(carrots, parsnips, turnips)"
-                        },
-                        {
-                            "quantity": 2,
-                            "unit": "tablespoon",
-                            "item": "olive oil",
-                            "details": "extra virgin"
-                        },
-                        {
-                            "quantity": 1,
-                            "unit": "bunch",
-                            "item": "fresh herbs",
-                            "details": "(sage, thyme, rosemary)"
-                        }
-                    ]),
-                    instructions=json.dumps([
-                        "Season turkey with herbs and olive oil",
-                        "Prepare vegetables and toss with olive oil",
-                        "Roast turkey and vegetables at low temperature (150°C)",
-                        "Let rest before serving"
-                    ]),
-                    image_url="turkey.jpg",
-                    type="dinner"
-                ),
-                Recipe(
-                    name="Tropical Morning Smoothie",
-                    ingredients=json.dumps([
-                        {
-                            "quantity": 1,
-                            "unit": "",
-                            "item": "mango",
-                            "details": "ripe"
-                        },
-                        {
-                            "quantity": 1,
-                            "unit": "",
-                            "item": "banana",
-                            "details": "ripe"
-                        },
-                        {
-                            "quantity": 200,
-                            "unit": "ml",
-                            "item": "coconut water",
-                            "details": "fresh"
-                        },
-                        {
-                            "quantity": 1,
-                            "unit": "thumb",
-                            "item": "ginger",
-                            "details": "fresh"
-                        }
-                    ]),
-                    instructions=json.dumps([
-                        "Peel and chop mango and banana",
-                        "Grate ginger",
-                        "Blend all ingredients until smooth",
-                        "Serve immediately"
-                    ]),
-                    image_url="tropical_smoothie.jpg",
-                    type="breakfast"
-                ),
-                Recipe(
-                    name="Mediterranean Salmon Salad",
-                    ingredients=json.dumps([
-                        {
-                            "quantity": 150,
-                            "unit": "g",
-                            "item": "wild salmon",
-                            "details": "fresh"
-                        },
-                        {
-                            "quantity": 100,
-                            "unit": "g",
-                            "item": "mixed salad leaves",
-                            "details": "fresh"
-                        },
-                        {
-                            "quantity": 50,
-                            "unit": "g",
-                            "item": "olives",
-                            "details": "kalamata"
-                        },
-                        {
-                            "quantity": 2,
-                            "unit": "tablespoon",
-                            "item": "olive oil",
-                            "details": "extra virgin"
-                        },
-                        {
-                            "quantity": 1,
-                            "unit": "",
-                            "item": "lemon",
-                            "details": "juice only"
-                        }
-                    ]),
-                    instructions=json.dumps([
-                        "Gently cook salmon at low temperature",
-                        "Prepare salad leaves and olives",
-                        "Flake salmon and arrange over salad",
-                        "Dress with olive oil and lemon juice"
-                    ]),
-                    image_url="salmon_salad.jpg",
-                    type="lunch"
-                )
+               Recipe(
+    name="Saumon aux Herbes de Provence",
+    ingredients=json.dumps([
+        {
+            "quantity": 200,
+            "unit": "g",
+            "item": "saumon sauvage",
+            "details": "filet frais"
+        },
+        {
+            "quantity": 1,
+            "unit": "cuillère à soupe",
+            "item": "herbes de Provence",
+            "details": "séchées"
+        },
+        {
+            "quantity": 2,
+            "unit": "cuillères à soupe",
+            "item": "huile d'olive",
+            "details": "extra vierge"
+        },
+        {
+            "quantity": 200,
+            "unit": "g",
+            "item": "épinards",
+            "details": "frais"
+        },
+        {
+            "quantity": 50,
+            "unit": "g",
+            "item": "noix",
+            "details": "concassées"
+        }
+    ]),
+    instructions=json.dumps([
+        "Préchauffer le four à 180°C",
+        "Assaisonner le saumon avec les herbes et l'huile d'olive",
+        "Cuire au four pendant 15-20 minutes",
+        "Faire revenir les épinards à l'huile d'olive",
+        "Garnir de noix concassées"
+    ]),
+    image_url="salmon.jpg",
+    type="dinner"
+),
+
+Recipe(
+    name="Petit-déjeuner Méditerranéen",
+    ingredients=json.dumps([
+        {
+            "quantity": 150,
+            "unit": "g",
+            "item": "yaourt grec",
+            "details": "nature"
+        },
+        {
+            "quantity": 30,
+            "unit": "g",
+            "item": "amandes",
+            "details": "effilées"
+        },
+        {
+            "quantity": 100,
+            "unit": "g",
+            "item": "myrtilles",
+            "details": "fraîches"
+        },
+        {
+            "quantity": 1,
+            "unit": "cuillère à café",
+            "item": "miel",
+            "details": "bio"
+        }
+    ]),
+    instructions=json.dumps([
+        "Verser le yaourt dans un bol",
+        "Ajouter les myrtilles",
+        "Saupoudrer d'amandes",
+        "Napper de miel"
+    ]),
+    image_url="breakfast.jpg",
+    type="breakfast"
+),
+
+# Mardi
+Recipe(
+    name="Salade de Quinoa aux Légumineuses",
+    ingredients=json.dumps([
+        {
+            "quantity": 150,
+            "unit": "g",
+            "item": "quinoa",
+            "details": "cuit"
+        },
+        {
+            "quantity": 100,
+            "unit": "g",
+            "item": "pois chiches",
+            "details": "cuits"
+        },
+        {
+            "quantity": 100,
+            "unit": "g",
+            "item": "tomates cerises",
+            "details": "coupées en deux"
+        },
+        {
+            "quantity": 50,
+            "unit": "g",
+            "item": "olives kalamata",
+            "details": "dénoyautées"
+        },
+        {
+            "quantity": 3,
+            "unit": "cuillères à soupe",
+            "item": "huile d'olive",
+            "details": "extra vierge"
+        }
+    ]),
+    instructions=json.dumps([
+        "Mélanger le quinoa cuit avec les pois chiches",
+        "Ajouter les tomates et les olives",
+        "Assaisonner avec l'huile d'olive",
+        "Servir à température ambiante"
+    ]),
+    image_url="quinoa_salad.jpg",
+    type="lunch"
+),
+
+# Continue with the rest of the week...
+# Each day includes breakfast, lunch, and dinner recipes following the same format
+# Focusing on anti-inflammatory ingredients like:
+# - Fatty fish (salmon, sardines, maquereau)
+# - Whole grains (quinoa, riz complet)
+# - Legumes (lentilles, pois chiches)
+# - Nuts and seeds (noix, amandes, graines de lin)
+# - Olive oil
+# - Fresh fruits and vegetables
+# - Mediterranean herbs and spices
+
+# Mercredi
+Recipe(
+    name="Sardines Grillées aux Herbes",
+    ingredients=json.dumps([
+        {
+            "quantity": 300,
+            "unit": "g",
+            "item": "sardines fraîches",
+            "details": "nettoyées"
+        },
+        {
+            "quantity": 2,
+            "unit": "citrons",
+            "item": "citrons bio",
+            "details": "en quartiers"
+        },
+        {
+            "quantity": 1,
+            "unit": "bouquet",
+            "item": "persil frais",
+            "details": "haché"
+        }
+    ]),
+    instructions=json.dumps([
+        "Assaisonner les sardines avec les herbes",
+        "Griller 3-4 minutes de chaque côté",
+        "Servir avec les quartiers de citron"
+    ]),
+    image_url="sardines.jpg",
+    type="dinner"
+),
+# Lundi
+Recipe(
+    name="Pavé de Saumon aux Agrumes et Fenouil",
+    ingredients=json.dumps([
+        {
+            "quantity": 180,
+            "unit": "g",
+            "item": "saumon sauvage",
+            "details": "pavé frais"
+        },
+        {
+            "quantity": 1,
+            "unit": "bulbe",
+            "item": "fenouil",
+            "details": "émincé finement"
+        },
+        {
+            "quantity": 1,
+            "unit": "orange",
+            "item": "orange bio",
+            "details": "en segments"
+        },
+        {
+            "quantity": 2,
+            "unit": "cuillères à soupe",
+            "item": "huile d'olive",
+            "details": "extra vierge"
+        },
+        {
+            "quantity": 1,
+            "unit": "pincée",
+            "item": "graines de fenouil",
+            "details": "écrasées"
+        }
+    ]),
+    instructions=json.dumps([
+        "Préchauffer le four à 180°C",
+        "Disposer le fenouil émincé dans un plat",
+        "Poser le saumon dessus",
+        "Arroser d'huile d'olive et parsemer de graines de fenouil",
+        "Cuire 18-20 minutes",
+        "Garnir avec les segments d'orange avant de servir"
+    ]),
+    image_url="salmon_fennel.jpg",
+    type="dinner"
+),
+
+Recipe(
+    name="Salade Tiède de Lentilles Vertes aux Noix",
+    ingredients=json.dumps([
+        {
+            "quantity": 200,
+            "unit": "g",
+            "item": "lentilles vertes du Puy",
+            "details": "crues"
+        },
+        {
+            "quantity": 50,
+            "unit": "g",
+            "item": "noix",
+            "details": "torréfiées et concassées"
+        },
+        {
+            "quantity": 1,
+            "unit": "échalote",
+            "item": "échalote",
+            "details": "ciselée finement"
+        },
+        {
+            "quantity": 3,
+            "unit": "cuillères à soupe",
+            "item": "huile d'olive",
+            "details": "extra vierge"
+        },
+        {
+            "quantity": 1,
+            "unit": "bouquet",
+            "item": "persil plat",
+            "details": "frais haché"
+        }
+    ]),
+    instructions=json.dumps([
+        "Cuire les lentilles dans l'eau bouillante 20-25 minutes",
+        "Égoutter et laisser tiédir",
+        "Mélanger avec l'échalote et le persil",
+        "Arroser d'huile d'olive",
+        "Parsemer de noix concassées"
+    ]),
+    image_url="lentils.jpg",
+    type="lunch"
+),
+
+# Mardi
+Recipe(
+    name="Daurade en Croûte d'Herbes",
+    ingredients=json.dumps([
+        {
+            "quantity": 200,
+            "unit": "g",
+            "item": "filet de daurade",
+            "details": "frais"
+        },
+        {
+            "quantity": 1,
+            "unit": "bouquet",
+            "item": "mélange d'herbes fraîches",
+            "details": "basilic, persil, ciboulette"
+        },
+        {
+            "quantity": 50,
+            "unit": "g",
+            "item": "amandes",
+            "details": "effilées"
+        },
+        {
+            "quantity": 2,
+            "unit": "cuillères à soupe",
+            "item": "huile d'olive",
+            "details": "extra vierge"
+        },
+        {
+            "quantity": 200,
+            "unit": "g",
+            "item": "haricots verts",
+            "details": "fins"
+        }
+    ]),
+    instructions=json.dumps([
+        "Mixer les herbes avec les amandes et l'huile d'olive",
+        "Recouvrir le poisson de ce mélange",
+        "Cuire au four 15 minutes à 180°C",
+        "Servir avec les haricots verts vapeur"
+    ]),
+    image_url="seabream.jpg",
+    type="dinner"
+),
+
+# Mercredi
+Recipe(
+    name="Bowl de Quinoa aux Légumes Rôtis et Pois Chiches",
+    ingredients=json.dumps([
+        {
+            "quantity": 150,
+            "unit": "g",
+            "item": "quinoa",
+            "details": "bien rincé"
+        },
+        {
+            "quantity": 400,
+            "unit": "g",
+            "item": "légumes racines",
+            "details": "patate douce, carotte, panais"
+        },
+        {
+            "quantity": 200,
+            "unit": "g",
+            "item": "pois chiches",
+            "details": "cuits"
+        },
+        {
+            "quantity": 1,
+            "unit": "cuillère à café",
+            "item": "curcuma",
+            "details": "en poudre"
+        },
+        {
+            "quantity": 3,
+            "unit": "cuillères à soupe",
+            "item": "huile d'olive",
+            "details": "extra vierge"
+        },
+        {
+            "quantity": 50,
+            "unit": "g",
+            "item": "graines de courge",
+            "details": "torréfiées"
+        }
+    ]),
+    instructions=json.dumps([
+        "Cuire le quinoa selon les instructions",
+        "Rôtir les légumes avec le curcuma et l'huile d'olive",
+        "Réchauffer les pois chiches",
+        "Assembler le bowl : quinoa, légumes, pois chiches",
+        "Parsemer de graines de courge"
+    ]),
+    image_url="quinoa_bowl.jpg",
+    type="dinner"
+),
+
+# Jeudi
+Recipe(
+    name="Maquereau Grillé à la Provençale",
+    ingredients=json.dumps([
+        {
+            "quantity": 200,
+            "unit": "g",
+            "item": "filets de maquereau",
+            "details": "frais"
+        },
+        {
+            "quantity": 400,
+            "unit": "g",
+            "item": "ratatouille",
+            "details": "aubergines, courgettes, poivrons, tomates"
+        },
+        {
+            "quantity": 2,
+            "unit": "gousses",
+            "item": "ail",
+            "details": "émincées"
+        },
+        {
+            "quantity": 1,
+            "unit": "citron",
+            "item": "citron bio",
+            "details": "en quartiers"
+        },
+        {
+            "quantity": 1,
+            "unit": "bouquet",
+            "item": "herbes de Provence",
+            "details": "thym, romarin, origan"
+        }
+    ]),
+    instructions=json.dumps([
+        "Préparer la ratatouille traditionnelle",
+        "Assaisonner les maquereaux d'herbes et d'ail",
+        "Griller les maquereaux 3-4 minutes de chaque côté",
+        "Servir sur un lit de ratatouille",
+        "Accompagner de quartiers de citron"
+    ]),
+    image_url="mackerel_provencal.jpg",
+    type="dinner"
+),
+
+# Vendredi
+Recipe(
+    name="Soupe de Poisson aux Légumes Méditerranéens",
+    ingredients=json.dumps([
+        {
+            "quantity": 300,
+            "unit": "g",
+            "item": "poisson blanc",
+            "details": "cabillaud ou lotte"
+        },
+        {
+            "quantity": 1,
+            "unit": "boîte",
+            "item": "tomates concassées",
+            "details": "400g"
+        },
+        {
+            "quantity": 2,
+            "unit": "poireaux",
+            "item": "poireaux",
+            "details": "émincés"
+        },
+        {
+            "quantity": 2,
+            "unit": "branches",
+            "item": "céleri",
+            "details": "émincées"
+        },
+        {
+            "quantity": 1,
+            "unit": "pincée",
+            "item": "safran",
+            "details": "en poudre"
+        },
+        {
+            "quantity": 50,
+            "unit": "g",
+            "item": "pistaches",
+            "details": "non salées, concassées"
+        }
+    ]),
+    instructions=json.dumps([
+        "Faire revenir les légumes à l'huile d'olive",
+        "Ajouter les tomates et le safran",
+        "Couvrir d'eau et laisser mijoter 20 minutes",
+        "Ajouter le poisson et cuire 5 minutes",
+        "Servir parsemé de pistaches"
+    ]),
+    image_url="fish_soup.jpg",
+    type="dinner"
+),
+Recipe(
+    name="Porridge aux Fruits Rouges et Graines",
+    ingredients=json.dumps([
+        {
+            "quantity": 50,
+            "unit": "g",
+            "item": "flocons d'avoine",
+            "details": "sans gluten"
+        },
+        {
+            "quantity": 200,
+            "unit": "ml",
+            "item": "lait d'amande",
+            "details": "non sucré"
+        },
+        {
+            "quantity": 100,
+            "unit": "g",
+            "item": "fruits rouges",
+            "details": "frais ou surgelés"
+        },
+        {
+            "quantity": 1,
+            "unit": "cuillère à soupe",
+            "item": "graines de chia",
+            "details": ""
+        },
+        {
+            "quantity": 1,
+            "unit": "cuillère à café",
+            "item": "miel",
+            "details": "bio"
+        },
+        {
+            "quantity": 1,
+            "unit": "pincée",
+            "item": "cannelle",
+            "details": "en poudre"
+        }
+    ]),
+    instructions=json.dumps([
+        "Faire chauffer le lait d'amande",
+        "Ajouter les flocons d'avoine et les graines de chia",
+        "Cuire à feu doux 5 minutes en remuant",
+        "Ajouter les fruits rouges et la cannelle",
+        "Napper de miel"
+    ]),
+    image_url="porridge.jpg",
+    type="breakfast"
+),
+
+Recipe(
+    name="Toast à l'Avocat et Saumon Fumé",
+    ingredients=json.dumps([
+        {
+            "quantity": 2,
+            "unit": "tranches",
+            "item": "pain complet au levain",
+            "details": "grillé"
+        },
+        {
+            "quantity": 1,
+            "unit": "fruit",
+            "item": "avocat",
+            "details": "mûr"
+        },
+        {
+            "quantity": 80,
+            "unit": "g",
+            "item": "saumon fumé",
+            "details": "sauvage"
+        },
+        {
+            "quantity": 1,
+            "unit": "citron",
+            "item": "citron bio",
+            "details": "pour le jus"
+        },
+        {
+            "quantity": 1,
+            "unit": "poignée",
+            "item": "graines de lin",
+            "details": "moulues"
+        }
+    ]),
+    instructions=json.dumps([
+        "Écraser l'avocat avec le jus de citron",
+        "Griller le pain",
+        "Étaler l'avocat sur le pain",
+        "Disposer le saumon fumé",
+        "Parsemer de graines de lin"
+    ]),
+    image_url="avocado_toast.jpg",
+    type="breakfast"
+),
+Recipe(
+    name="Smoothie Bowl Anti-inflammatoire",
+    ingredients=json.dumps([
+        {
+            "quantity": 1,
+            "unit": "fruit",
+            "item": "mangue",
+            "details": "surgelée"
+        },
+        {
+            "quantity": 1,
+            "unit": "banane",
+            "item": "banane",
+            "details": "surgelée"
+        },
+        {
+            "quantity": 2,
+            "unit": "cm",
+            "item": "gingembre frais",
+            "details": "pelé"
+        },
+        {
+            "quantity": 1,
+            "unit": "cuillère à café",
+            "item": "curcuma",
+            "details": "frais ou en poudre"
+        },
+        {
+            "quantity": 200,
+            "unit": "ml",
+            "item": "lait de coco",
+            "details": "bio"
+        },
+        {
+            "quantity": 20,
+            "unit": "g",
+            "item": "granola sans gluten",
+            "details": "pour le topping"
+        },
+        {
+            "quantity": 1,
+            "unit": "cuillère à soupe",
+            "item": "noix de coco",
+            "details": "râpée"
+        }
+    ]),
+    instructions=json.dumps([
+        "Mixer les fruits surgelés avec le lait de coco",
+        "Ajouter le gingembre et le curcuma",
+        "Verser dans un bol",
+        "Garnir de granola et noix de coco"
+    ]),
+    image_url="smoothie_bowl.jpg",
+    type="breakfast"
+),
+
+Recipe(
+    name="Omelette Méditerranéenne aux Herbes",
+    ingredients=json.dumps([
+        {
+            "quantity": 3,
+            "unit": "unités",
+            "item": "œufs bio",
+            "details": ""
+        },
+        {
+            "quantity": 50,
+            "unit": "g",
+            "item": "épinards frais",
+            "details": ""
+        },
+        {
+            "quantity": 2,
+            "unit": "cuillères à soupe",
+            "item": "huile d'olive",
+            "details": "extra vierge"
+        },
+        {
+            "quantity": 1,
+            "unit": "bouquet",
+            "item": "herbes fraîches",
+            "details": "basilic, ciboulette, persil"
+        },
+        {
+            "quantity": 30,
+            "unit": "g",
+            "item": "fromage de chèvre frais",
+            "details": "facultatif"
+        }
+    ]),
+    instructions=json.dumps([
+        "Battre les œufs avec les herbes ciselées",
+        "Faire revenir les épinards à l'huile d'olive",
+        "Verser les œufs battus",
+        "Cuire doucement et ajouter le fromage",
+        "Plier l'omelette et servir"
+    ]),
+    image_url="omelette.jpg",
+    type="breakfast"
+),
+Recipe(
+    name="Chia Pudding aux Fruits d'Été",
+    ingredients=json.dumps([
+        {
+            "quantity": 4,
+            "unit": "cuillères à soupe",
+            "item": "graines de chia",
+            "details": ""
+        },
+        {
+            "quantity": 250,
+            "unit": "ml",
+            "item": "lait végétal",
+            "details": "amande ou avoine"
+        },
+        {
+            "quantity": 100,
+            "unit": "g",
+            "item": "pêches",
+            "details": "fraîches"
+        },
+        {
+            "quantity": 1,
+            "unit": "cuillère à café",
+            "item": "extrait de vanille",
+            "details": "pure"
+        },
+        {
+            "quantity": 2,
+            "unit": "cuillères à soupe",
+            "item": "amandes effilées",
+            "details": "grillées"
+        }
+    ]),
+    instructions=json.dumps([
+        "Mélanger les graines de chia avec le lait et la vanille",
+        "Laisser reposer au frais toute la nuit",
+        "Le matin, couper les pêches en dés",
+        "Disposer les fruits sur le pudding",
+        "Parsemer d'amandes grillées"
+    ]),
+    image_url="chia_pudding.jpg",
+    type="breakfast"
+)
         ]
         
         db.session.add_all(recipes)

@@ -85,4 +85,4 @@
 
 <script setup lang="javascript"></script>
 
-<style src="./patho.css"></style>
+<style src="./index.css"></style>

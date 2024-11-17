@@ -167,56 +167,8 @@ def get_recipe(recipe_id):
         return jsonify(schema.dump(recipe))
     except Exception as e:
         return jsonify({"error": str(e)}), 500
-
-# Favorite Recipes Routes
-@app.route('/api/users/<int:user_id>/favorite-recipes', methods=['POST'])
-def add_favorite_recipe(user_id):
-    try:
-        user = User.query.get_or_404(user_id)
-        recipe_id = request.json.get('recipe_id')
-        
-        if not recipe_id:
-            return jsonify({"error": "Recipe ID is required"}), 400
-            
-        recipe = Recipe.query.get_or_404(recipe_id)
-        
-        if recipe in user.favorite_recipes:
-            return jsonify({"message": "Recipe already in favorites"}), 400
-            
-        user.favorite_recipes.append(recipe)
-        db.session.commit()
-        
-        return jsonify({"message": "Recipe added to favorites"})
-    except Exception as e:
-        db.session.rollback()
-        return jsonify({"error": str(e)}), 500
-
-@app.route('/api/users/<int:user_id>/favorite-recipes', methods=['GET'])
-def get_favorite_recipes(user_id):
-    try:
-        user = User.query.get_or_404(user_id)
-        schema = RecipeSchema(many=True)
-        return jsonify(schema.dump(user.favorite_recipes))
-    except Exception as e:
-        return jsonify({"error": str(e)}), 500
-
-@app.route('/api/users/<int:user_id>/favorite-recipes/<int:recipe_id>', methods=['DELETE'])
-def remove_favorite_recipe(user_id, recipe_id):
-    try:
-        user = User.query.get_or_404(user_id)
-        recipe = Recipe.query.get_or_404(recipe_id)
-        
-        if recipe in user.favorite_recipes:
-            user.favorite_recipes.remove(recipe)
-            db.session.commit()
-            return jsonify({"message": "Recipe removed from favorites"})
-        else:
-            return jsonify({"message": "Recipe not in favorites"}), 404
-    except Exception as e:
-        db.session.rollback()
-        return jsonify({"error": str(e)}), 500
-
-
+    
+    
 @app.route('/api/users/<int:user_id>/meal-plan', methods=['POST'])
 def generate_meal_plan(user_id):
     try:
@@ -345,6 +297,15 @@ def generate_shopping_list(user_id):
         
     except Exception as e:
         return jsonify({"error": str(e)}), 500
+
+@app.route('/api/users/<int:user_id>/meal-plan/invalidate-recipe', methods=['POST'])
+def invalidate_meal_plan_recipe(user_id):
+    try:    
+        return jsonify({"message": "Nous allons supprimer le repas de la planification"})
+
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
+
 
 if __name__ == '__main__':
     app.run(debug=os.getenv('FLASK_DEBUG', 'False').lower() == 'true')
