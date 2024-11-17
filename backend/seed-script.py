@@ -16,12 +16,12 @@ def seed_database():
         print("Creating sample users...")
         users = [
             User(
-                username="john_doe",
-                email="john@example.com",
-                first_name="John",
-                last_name="Doe",
+                username="marie_dupont",
+                email="marie@example.com",
+                first_name="Marie",
+                last_name="Dupont",
                 age=30,
-                gender="male",
+                gender="female",
                 height=175.5,
                 weight=70.2,
                 condition="Rheumatism",
@@ -743,7 +743,95 @@ Recipe(
     ]),
     image_url="chia_pudding.jpg",
     type="breakfast"
-)
+),
+Recipe(
+        name="Porridge de Sarrasin aux Fruits",
+        ingredients=json.dumps([
+            {
+                "quantity": 100,
+                "unit": "g",
+                "item": "sarrasin",
+                "details": "trempé la veille"
+            },
+            {
+                "quantity": 250,
+                "unit": "ml",
+                "item": "lait d'amande",
+                "details": "non sucré"
+            },
+            {
+                "quantity": 1,
+                "unit": "cuillère à soupe",
+                "item": "miel",
+                "details": "cru (facultatif)"
+            },
+            {
+                "quantity": 50,
+                "unit": "g",
+                "item": "fruits rouges",
+                "details": "frais"
+            },
+            {
+                "quantity": 1,
+                "unit": "cuillère à café",
+                "item": "cannelle",
+                "details": "moulue"
+            }
+        ]),
+        instructions=json.dumps([
+            "Égoutter le sarrasin trempé",
+            "Mixer avec le lait d'amande jusqu'à consistance crémeuse",
+            "Réchauffer doucement si désiré",
+            "Garnir de fruits rouges, cannelle et miel"
+        ]),
+        image_url="porridge_sarrasin.jpg",
+        type="lunch"
+    ),
+    Recipe(
+        name="Bar en Papillote aux Herbes",
+        ingredients=json.dumps([
+            {
+                "quantity": 200,
+                "unit": "g",
+                "item": "filet de bar",
+                "details": "sauvage"
+            },
+            {
+                "quantity": 1,
+                "unit": "bouquet",
+                "item": "herbes fraîches",
+                "details": "(aneth, persil, estragon)"
+            },
+            {
+                "quantity": 1,
+                "unit": "",
+                "item": "citron",
+                "details": "en tranches"
+            },
+            {
+                "quantity": 200,
+                "unit": "g",
+                "item": "fenouil",
+                "details": "émincé finement"
+            },
+            {
+                "quantity": 2,
+                "unit": "cuillères à soupe",
+                "item": "huile d'olive",
+                "details": "extra vierge"
+            }
+        ]),
+        instructions=json.dumps([
+            "Placer le poisson sur du papier cuisson",
+            "Couvrir d'herbes, de citron et de fenouil",
+            "Arroser d'huile d'olive",
+            "Fermer la papillote",
+            "Cuire à basse température jusqu'à ce que le poisson soit cuit"
+        ]),
+        image_url="bar_papillote.jpg",
+        type="lunch"
+    ),
+
         ]
         
         db.session.add_all(recipes)

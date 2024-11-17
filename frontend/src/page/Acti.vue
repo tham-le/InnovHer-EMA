@@ -1,132 +1,150 @@
 <template>
-  <div class="main-container">
-    <div class="rectangle">
-      <div class="ellipse"></div>
-      <div class="ellipse-1"><span class="number-86">86</span></div>
-      <span class="lorem-ipsum">Lorem ipsum dolor sit amet</span>
-    </div>
-    <div class="frame">
-      <button class="button-frame">
-        <div class="group"></div>
-        <span class="add-activity">Ajouter une activité</span></button
-      ><button class="button-frame-2">
-        <div class="group-3">
-          <div class="polygon"></div>
-          <div class="ellipse-4"></div>
-        </div>
-        <span class="add-video">Ajouter une vidéo</span>
-      </button>
-    </div>
-    <div class="frame-5">
-      <div class="vector"></div>
-      <div class="frame-6">
-        <div class="frame-7">
-          <span class="titre">TITRE</span
-          ><button class="frame-8">
-            <span class="date-temps">Date - Temps</span>
-          </button>
-        </div>
-        <span class="fusce-est-ipsum"
-          >Fusce est ipsum, pulvinar condimentum risus vel, tincidunt suscipit
-          felis. Proin nec posuere tortor. Tellus tellus, vestibulum sit amet
-          odio ac, convallis rhoncus lacus.</span
-        >
-      </div>
-    </div>
-    <div class="frame-9">
-      <div class="vector-a"></div>
-      <div class="frame-b">
-        <div class="frame-c">
-          <span class="titre-d">TITRE</span
-          ><button class="frame-e">
-            <span class="date-temps-f">Date - Temps</span>
-          </button>
-        </div>
-        <span class="text-a"
-          >Fusce est ipsum, pulvinar condimentum risus vel, tincidunt suscipit
-          felis. Proin nec posuere tortor. Tellus tellus, vestibulum sit amet
-          odio ac, convallis rhoncus lacus.</span
-        >
-      </div>
-    </div>
-    <div class="group-6">
-      <div class="img-3"></div>
-      <div class="section-4">
-        <div class="wrapper-3">
-          <span class="text-b">TITRE</span
-          ><button class="Button-5">
-            <span class="text-c">Date - Temps</span>
-          </button>
-        </div>
-        <span class="text-d"
-          >Fusce est ipsum, pulvinar condimentum risus vel, tincidunt suscipit
-          felis. Proin nec posuere tortor. Tellus tellus, vestibulum sit amet
-          odio ac, convallis rhoncus lacus.</span
-        >
-      </div>
-    </div>
-    <div class="group-7">
-      <div class="img-4"></div>
-      <div class="section-5">
-        <div class="box">
-          <span class="text-e">TITRE</span
-          ><button class="Button-6">
-            <span class="date-temps-10">Date - Temps</span>
-          </button>
-        </div>
-        <span class="fusce-est-ipsum-11"
-          >Fusce est ipsum, pulvinar condimentum risus vel, tincidunt suscipit
-          felis. Proin nec posuere tortor. Tellus tellus, vestibulum sit amet
-          odio ac, convallis rhoncus lacus.</span
-        >
-      </div>
-    </div>
-    <div class="frame-12">
-      <div class="vector-13"></div>
-      <div class="frame-14">
-        <div class="frame-15">
-          <span class="titre-16">TITRE</span
-          ><button class="frame-17">
-            <span class="date-temps-18">Date - Temps</span>
-          </button>
-        </div>
-        <span class="fusce-est-ipsum-19"
-          >Fusce est ipsum, pulvinar condimentum risus vel, tincidunt suscipit
-          felis. Proin nec posuere tortor. Tellus tellus, vestibulum sit amet
-          odio ac, convallis rhoncus lacus.</span
-        >
-      </div>
-    </div>
-    <div class="rectangle-1a">
-      <div class="frame-1b">
-        <div class="frame-1c">
-          <div class="group-1d"></div>
-          <span class="alimentation">Alimentation</span>
-        </div>
-        <div class="frame-1e">
-          <div class="group-1f"><div class="vector-20"></div></div>
-          <span class="activites-21">Activités</span>
-        </div>
-        <div class="frame-22">
-          <div class="vector-23"></div>
-          <span class="pathologie">Pathologie</span>
-        </div>
-        <div class="frame-24">
-          <div class="group-25">
-            <div class="vector-26"></div>
-            <div class="vector-27"></div>
+  <v-container class="pa-0" fluid>
+    <div class="min-h-screen" style="background-color: #FFE4D6;">
+      <!-- Header Section -->
+      <v-container class="pa-4">
+        <v-card class="d-flex align-center mb-4 rounded-pill pa-3">
+          <div class="relative mr-4" style="width: 48px; height: 48px;">
+            <div class="position-absolute rounded-circle border-4" 
+                 style="border-color: #E5B1B1; inset: 0;">
+            </div>
+            <div class="position-absolute rounded-circle border-4"
+                 style="border-color: #E5B1B1 transparent transparent #E5B1B1; inset: 0; transform: rotate(310deg);">
+            </div>
+            <div class="position-absolute d-flex align-center justify-center font-weight-bold text-lg"
+                 style="inset: 0;">
+              86
+            </div>
           </div>
-          <span class="profil">Profil</span>
+          <span class="text-lg font-weight-medium">
+            Note de la journée
+          </span>
+        </v-card>
+
+        <div class="d-flex gap-4">
+          <v-btn variant="elevated" color="white" class="rounded-pill">
+            <v-icon color="#E5B1B1" class="mr-2">mdi-plus</v-icon>
+            Ajouter une activité
+          </v-btn>
+          <v-btn variant="elevated" color="white" class="rounded-pill">
+            <v-icon color="#E5B1B1" class="mr-2">mdi-play</v-icon>
+            Ajouter une vidéo
+          </v-btn>
         </div>
-        <div class="frame-28">
-          <div class="vector-29"></div>
-          <span class="microbiote">Microbiote</span>
-        </div>
-      </div>
+      </v-container>
+
+      <!-- Main Content -->
+      <v-container>
+        <v-row>
+          <v-col v-for="activity in activities" :key="activity.id" cols="12">
+            <v-card class="rounded-xl">
+              <div class="d-flex p-3">
+                <v-avatar color="#E5B1B1" class="mr-4">
+                  <v-icon>{{ activity.youtubeUrl ? 'mdi-youtube' : 'mdi-bell' }}</v-icon>
+                </v-avatar>
+                <div class="flex-grow-1">
+                  <div class="d-flex justify-space-between align-center mb-2">
+                    <span class="font-weight-bold">{{ activity.title }}</span>
+                    <v-chip style="background-color: #FFB4B4">
+                      {{ activity.datetime }}
+                    </v-chip>
+                  </div>
+                  <p class="text-body-2 text-grey-darken-1">
+                    {{ activity.description }}
+                  </p>
+                  <div v-if="activity.youtubeUrl" class="mt-2 position-relative">
+                    <a :href="activity.youtubeUrl" target="_blank" rel="noopener noreferrer">
+                      <v-img
+                        :src="activity.thumbnailUrl"
+                        height="180"
+                        cover
+                        class="rounded-lg"
+                      >
+                        <template v-slot:placeholder>
+                          <v-row class="fill-height ma-0" align="center" justify="center">
+                            <v-progress-circular indeterminate color="#E5B1B1"></v-progress-circular>
+                          </v-row>
+                        </template>
+                      </v-img>
+                      <div class="position-absolute d-flex align-center justify-center" style="inset: 0;">
+                        <v-icon size="64" color="white">mdi-play-circle</v-icon>
+                      </div>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </v-card>
+          </v-col>
+        </v-row>
+      </v-container>
+
     </div>
-  </div>
+  </v-container>
 </template>
 
-<script setup lang="javascript"></script>
+<script setup lang="ts">
+interface Activity {
+  id: number;
+  title: string;
+  description: string;
+  datetime: string;
+  youtubeUrl?: string;
+  thumbnailUrl?: string;
+}
 
-<style src="./acti.css"></style>
+const activities: Activity[] = [
+  {
+    id: 1,
+    title: "Course à pied",
+    description: "Séance d'endurance avec intervalles. 5 min échauffement, 20 min course à intensité modérée, 5 min retour au calme.",
+    datetime: "Lun - 30 min",
+  },
+  {
+    id: 2,
+    title: "Séance de Yoga",
+    description: "Yoga flow dynamique pour améliorer la flexibilité et la force. Focus sur les postures de guerrier et les salutations au soleil.",
+    datetime: "Mar - 45 min",
+    youtubeUrl: "https://www.youtube.com/watch?v=3_rUl32CPbA",
+    thumbnailUrl: "https://i3.ytimg.com/vi/3_rUl32CPbA/maxresdefault.jpg"
+  },
+  {
+    id: 3,
+    title: "Natation", 
+    description: "Entraînement mixte avec 20 longueurs en crawl, 10 longueurs en brasse. Travail technique sur la respiration.",
+    datetime: "Mer - 40 min",
+  },
+  {
+    id: 4,
+    title: "Musculation",
+    description: "Circuit training complet: squats, pompes, développé couché, rowing. 3 séries de 12 répétitions pour chaque exercice.",
+    datetime: "Jeu - 50 min",
+    youtubeUrl: "https://www.youtube.com/watch?v=tyz0y43a8Cs",
+    thumbnailUrl: "https://i3.ytimg.com/vi/tyz0y43a8Cs/maxresdefault.jpg"
+  },
+  {
+    id: 5,
+    title: "Vélo statique",
+    description: "Séance cardio sur vélo avec variations d'intensité. Programme collines avec pics d'intensité toutes les 5 minutes.",
+    datetime: "Ven - 35 min",
+  },
+]
+</script>
+
+<style scoped>
+.border-4 {
+  border-width: 4px;
+  border-style: solid;
+}
+
+.position-absolute {
+  position: absolute;
+}
+
+.relative {
+  position: relative;
+}
+
+.min-h-screen {
+  min-height: 100vh;
+}
+</style>

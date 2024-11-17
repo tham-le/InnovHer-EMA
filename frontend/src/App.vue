@@ -13,7 +13,7 @@
       >
         <router-view v-slot="{ Component }">
           <v-fade-transition mode="out-in">
-            <component :is="Component" />
+            <component :is="Component" :userId="1" />
           </v-fade-transition>
         </router-view>
       </v-container>

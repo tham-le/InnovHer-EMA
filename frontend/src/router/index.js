@@ -34,6 +34,12 @@ const router = createRouter({
       path: '/microbiote',
       name: 'Microbiote',
       component: () => import('../page/Microbiote.vue')
+    },
+    {
+      path: '/AboutUs',
+      name: 'About Us',
+      component: () => import('../page/AboutUs.vue')
+ 
     }
   ]
 })

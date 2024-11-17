@@ -40,6 +40,18 @@
             Plan hebdomadaire
           </v-btn>
         </v-btn-toggle>
+
+
+         <!-- Add Shopping List Button -->
+        <v-btn
+          color="success"
+          class="ml-4"
+          @click="fetchShoppingList"
+          :loading="isLoadingShoppingList"
+        >
+          <v-icon left>mdi-cart</v-icon>
+          Liste de courses
+        </v-btn>
       </v-col>
     </v-row>
     
@@ -426,7 +438,6 @@
         </v-col>
       </v-row>
     </template>
-
     <!-- Recipe Details Dialog -->
     <v-dialog v-model="recipeDialog.show" max-width="600">
       <v-card v-if="recipeDialog.recipe">
@@ -435,38 +446,28 @@
           :src="getImageUrl(recipeDialog.recipe.image_url)"
           height="200"
           class="white--text align-end"
-          gradient="to bottom, rgba(0,0,0,.1), rgba(0,0,0,.5)"
-        >
+          gradient="to bottom, rgba(0,0,0,.1), rgba(0,0,0,.5)">
           <v-card-title v-text="recipeDialog.recipe.name"></v-card-title>
         </v-img>
-        
         <v-card-text class="pt-4">
-          <h3 class="mb-3">Ingrédients</h3>
-          <v-list dense>
+          <h3 class="mb-2">Ingrédients</h3>
+          <v-list density="compact" class="pa-0">
             <v-list-item v-for="(ingredient, index) in recipeDialog.recipe.ingredients" :key="index">
               <v-list-item-content>
-                <v-list-item-title class="subtitle-1">
-                  • {{ ingredient.quantity }}{{ ingredient.unit }} {{ ingredient.item }}
-                </v-list-item-title>
-                <v-list-item-subtitle v-if="ingredient.details" class="grey--text">
-                  ({{ ingredient.details }})
-                </v-list-item-subtitle>
+                <v-list-item-title class="subtitle-1">• {{ ingredient.quantity }}{{ ingredient.unit }} {{ ingredient.item }}</v-list-item-title>
+                <v-list-item-subtitle v-if="ingredient.details" class="grey--text">({{ ingredient.details }})</v-list-item-subtitle>
               </v-list-item-content>
             </v-list-item>
           </v-list>
-
-          <h3 class="mt-4 mb-3">Instructions</h3>
-          <v-list dense class="transparent">
+          <h3 class="mt-2 mb-2">Instructions</h3>
+          <v-list density="compact" class="pa-0 transparent">
             <v-list-item v-for="(instruction, index) in recipeDialog.recipe.instructions" :key="index">
               <v-list-item-content>
-                <v-list-item-title class="subtitle-1">
-                  {{ index + 1 }}. {{ instruction }}
-                </v-list-item-title>
+                <v-list-item-title class="subtitle-1">{{ index + 1 }}. {{ instruction }}</v-list-item-title>
               </v-list-item-content>
             </v-list-item>
           </v-list>
         </v-card-text>
-        
         <v-card-actions>
           <v-spacer></v-spacer>
           <v-btn text @click="recipeDialog.show = false">Fermer</v-btn>
@@ -517,6 +518,91 @@
         </v-btn>
       </template>
     </v-snackbar>
+
+<!-- Shopping List Dialog -->
+<v-dialog v-model="shoppingListDialog.show" max-width="600">
+  <v-card>
+    <v-card-title class="headline d-flex align-center">
+      Liste de courses
+      <v-spacer></v-spacer>
+      <v-btn
+        color="primary"
+        text
+        class="mr-2"
+        @click="clearAllChecked"
+        v-if="hasCheckedItems"
+      >
+        <v-icon left>mdi-refresh</v-icon>
+        Réinitialiser
+      </v-btn>
+      <v-btn icon @click="shoppingListDialog.show = false">
+        <v-icon>mdi-close</v-icon>
+      </v-btn>
+    </v-card-title>
+    
+    <v-card-text>
+      <v-list v-if="shoppingListDialog.items.length">
+        <v-list-item
+          v-for="(item, index) in shoppingListDialog.items"
+          :key="index"
+          :class="{ 'grey lighten-4': item.checked }"
+        >
+          <template v-slot:prepend>
+            <v-checkbox
+              v-model="item.checked"
+              @change="updateCheckedStatus(item)"
+              :color="item.checked ? 'success' : 'primary'"
+              hide-details
+            ></v-checkbox>
+          </template>
+          
+          <v-list-item-content :class="{ 'text-decoration-line-through': item.checked }">
+            <v-list-item-title>
+              {{ item.item }}
+              <span v-if="item.quantity" class="font-weight-bold">
+                - {{ item.quantity }} {{ item.unit }}
+              </span>
+            </v-list-item-title>
+            <v-list-item-subtitle v-if="item.details">
+              {{ item.details }}
+            </v-list-item-subtitle>
+          </v-list-item-content>
+        </v-list-item>
+      </v-list>
+      <div v-else class="text-center pa-4">
+        Aucun article dans la liste de courses
+      </div>
+
+      <!-- Progress Section -->
+      <v-card-text v-if="shoppingListDialog.items.length" class="pt-4">
+        <div class="d-flex align-center mb-2">
+          <span class="text-subtitle-2 mr-2">Progression:</span>
+          <span class="text-body-2">{{ checkedItemsCount }} sur {{ shoppingListDialog.items.length }}</span>
+        </div>
+        <v-progress-linear
+          :value="progressPercentage"
+          color="success"
+          height="20"
+        >
+          <template v-slot:default="{ value }">
+            <strong>{{ Math.ceil(value) }}%</strong>
+          </template>
+        </v-progress-linear>
+      </v-card-text>
+    </v-card-text>
+    
+    <v-card-actions>
+      <v-spacer></v-spacer>
+      <v-btn
+        color="primary"
+        text
+        @click="shoppingListDialog.show = false"
+      >
+        Fermer
+      </v-btn>
+    </v-card-actions>
+  </v-card>
+</v-dialog>
   </v-container>
 </template>
 
@@ -530,12 +616,14 @@ export default {
   
   setup() {
     const userId = 1 // Fixed user ID
-    const baseUrl = 'http://localhost:5000/api'
+    const baseUrl = import.meta.env.VITE_API_URL
     const selectedDate = ref(new Date())
     const mealPlans = ref([])
     const isLoading = ref(false)
     const isGenerating = ref(false)
     const viewMode = ref('daily')
+    const weeklyViewMode = ref('list')
+    const isLoadingShoppingList = ref(false)
     const alert = ref({
       show: false,
       type: 'success',
@@ -752,16 +840,71 @@ export default {
     }
 
     const truncateIngredients = (ingredients) => {
-      if (typeof ingredients === 'string') {
-        ingredients = JSON.parse(ingredients);
-      }
-      const ingredientsList = ingredients
-        .map(ing => ing.item)
-        .slice(0, 2)
-        .join(', ');
-      return ingredientsList + (ingredients.length > 2 ? '...' : '');
+          if (typeof ingredients === 'string') {
+            ingredients = JSON.parse(ingredients);
+          }
+          const ingredientsList = ingredients
+            .map(ing => ing.item)
+            .slice(0, 2)
+            .join(', ');
+          return ingredientsList + (ingredients.length > 2 ? '...' : '');
+        };
+
+
+        const shoppingListDialog = ref({
+          show: false,
+          items: []
+        });
+        const checkedItemsCount = computed(() => {
+      return shoppingListDialog.value.items.filter(item => item.checked).length;
+    });
+
+    const progressPercentage = computed(() => {
+      if (shoppingListDialog.value.items.length === 0) return 0;
+      return (checkedItemsCount.value / shoppingListDialog.value.items.length) * 100;
+    });
+
+    const hasCheckedItems = computed(() => {
+      return shoppingListDialog.value.items.some(item => item.checked);
+    });
+
+    // Add these methods
+    const updateCheckedStatus = (item) => {
+      // You could save the checked status to localStorage or your backend here
+          localStorage.setItem('shoppingList', JSON.stringify(shoppingListDialog.value.items));
     };
 
+    const clearAllChecked = () => {
+      shoppingListDialog.value.items.forEach(item => {
+        item.checked = false;
+      });
+      localStorage.setItem('shoppingList', JSON.stringify(shoppingListDialog.value.items));
+    };
+
+    // Add this new method
+    const fetchShoppingList = async () => {
+      isLoadingShoppingList.value = true;
+      try {
+        const response = await fetch(`${baseUrl}/users/${userId}/shopping-list`);
+        if (response.ok) {
+          const data = await response.json();
+          // Load saved checked status from localStorage
+          const savedList = JSON.parse(localStorage.getItem('shoppingList') || '[]');
+          shoppingListDialog.value.items = data.shopping_list.map(item => ({
+            ...item,
+            checked: savedList.find(saved => saved.item === item.item)?.checked || false
+          }));
+          shoppingListDialog.value.show = true;
+        } else {
+          showAlert('error', 'Erreur lors du chargement de la liste de courses');
+        }
+      } catch (error) {
+        console.error('Error fetching shopping list:', error);
+        showAlert('error', 'Erreur de connexion');
+      } finally {
+        isLoadingShoppingList.value = false;
+      }
+    };
     // Lifecycle hooks
     onMounted(() => {
       fetchMealPlan()
@@ -796,7 +939,15 @@ export default {
       truncateIngredients,
       invalidateDialog,
       invalidateMeal,
-      confirmInvalidateMeal
+      confirmInvalidateMeal,
+      fetchShoppingList,
+      shoppingListDialog,
+      isLoadingShoppingList,
+      checkedItemsCount,
+      progressPercentage,
+      hasCheckedItems,
+      updateCheckedStatus,
+      clearAllChecked
     }
   }
 }
@@ -882,5 +1033,16 @@ export default {
 
 :deep(.v-img__img) {
   object-fit: cover;
+}
+
+.v-list-item__title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.v-list-item__subtitle {
+  font-style: italic;
+  color: rgba(0, 0, 0, 0.6);
 }
 </style>

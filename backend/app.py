@@ -19,7 +19,7 @@ app = Flask(__name__)
 # Configure CORS
 CORS(app, resources={
     r"/api/*": {
-        "origins": ["http://localhost:5173"],  # Vite's default port
+        "origins": "*",  # Vite's default port
         "methods": ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
         "allow_headers": ["Content-Type"]
     }
@@ -57,6 +57,8 @@ def create_user():
 def get_user(user_id):
     try:
         user = User.query.get_or_404(user_id)
+        if user is None:
+            user = User(id=1)
         schema = UserSchema()
         return jsonify(schema.dump(user))
     except Exception as e:
@@ -173,6 +175,8 @@ def get_recipe(recipe_id):
 def generate_meal_plan(user_id):
     try:
         user = User.query.get_or_404(user_id)
+        if user is None:
+            user = User(id=1)
         
         # Delete existing meal plan for the user if it exists
         MealPlan.query.filter_by(user_id=user_id).delete()

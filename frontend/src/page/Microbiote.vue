@@ -1,115 +1,114 @@
 <template>
-    <div class="main-container">
-      <div class="rectangle">
-        <div class="ellipse"></div>
-        <div class="ellipse-1"><span class="number-86">86</span></div>
-        <span class="lorem-ipsum">Lorem ipsum dolor sit amet</span>
-      </div>
-      <button class="frame">
-        <span class="suivi-douleur">Suivi douleur</span>
-        <div class="group">
-          <div class="group-2">
-            <div class="group-3"><div class="group-4"></div></div>
-          </div>
-          <div class="ellipse-5"></div>
-        </div>
-      </button>
-      <div class="frame-6">
-        <div class="frame-7">
-          <div class="frame-8"><div class="vector"></div></div>
-          <span class="novembre">Novembre 15-21 2024</span>
-          <div class="frame-9"><div class="vector-a"></div></div>
-        </div>
-        <div class="date">
-          <div class="frame-b">
-            <span class="lundi">Lundi</span><span class="number-fifteen">15</span>
-          </div>
-          <div class="frame-c">
-            <span class="mardi">Mardi</span><span class="number-sixteen">16</span>
-          </div>
-          <div class="frame-d">
-            <span class="mer">Mer</span><span class="number-seventeen">17</span>
-          </div>
-          <button class="button">
-            <span class="jeudi">Jeudi</span
-            ><span class="number-eighteen">18</span>
-          </button>
-          <div class="frame-e">
-            <span class="ven">Ven</span><span class="number-nineteen">19</span>
-          </div>
-          <div class="frame-f">
-            <span class="sam">Sam</span><span class="span">20</span>
-          </div>
-          <div class="div-frame">
-            <span class="span-dim">Dim</span><span class="span-10">21</span>
-          </div>
-        </div>
-      </div>
-      <div class="div-rectangle">
-        <div class="div-flex-row-a">
-          <div class="div-line"></div>
-          <div class="div-line-11"></div>
-          <div class="div-line-12"></div>
-          <div class="div-line-13"></div>
-          <div class="div-line-14"></div>
-          <div class="div-line-15"></div>
-          <div class="div-rectangle-16"></div>
-          <div class="div-rectangle-17"></div>
-          <div class="div-line-18"></div>
-          <div class="div-line-19"></div>
-          <div class="div-rectangle-1a"></div>
-          <div class="div-line-1b"></div>
-          <div class="div-rectangle-1c"></div>
-          <div class="line"></div>
-          <div class="rectangle-1d"></div>
-          <div class="line-1e"></div>
-          <div class="line-1f"></div>
-          <div class="line-20"></div>
-          <div class="line-21"></div>
-          <div class="line-22"></div>
-          <div class="line-23"></div>
-          <div class="line-24"></div>
-        </div>
-        <span class="lorem-ipsum-25">lorem ipsum</span>
-        <div class="flex-row-b">
-          <div class="ellipse-26"></div>
-          <span class="lorem-ipsum-27">lorem ipsum</span>
-        </div>
-        <div class="flex-row-cca">
-          <div class="ellipse-28"></div>
-          <span class="lorem-ipsum-29">lorem ipsum</span>
-        </div>
-      </div>
-      <div class="rectangle-2a">
-        <div class="frame-2b">
-          <div class="frame-2c">
-            <div class="group-2d"></div>
-            <span class="alimentation">Alimentation</span>
-          </div>
-          <div class="frame-2e">
-            <div class="group-2f"><div class="vector-30"></div></div>
-            <span class="activites">Activités</span>
-          </div>
-          <div class="frame-31">
-            <div class="vector-32"></div>
-            <span class="pathologie">Pathologie</span>
-          </div>
-          <div class="frame-33">
-            <div class="group-34">
-              <div class="vector-35"></div>
-              <div class="vector-36"></div>
-            </div>
-            <span class="profil">Profil</span>
-          </div>
-          <div class="frame-37">
-            <div class="vector-38"></div>
-            <span class="microbiote">Microbiote</span>
-          </div>
-        </div>
+  <div class="min-h-screen bg-gradient-to-b from-[#FFE4D6] to-[#ffd6c3] relative">
+    <!-- Header Section -->
+    <div class="sticky top-0 z-50 bg-transparent backdrop-blur-sm pt-4 px-4 pb-2">
+      <div class="flex gap-2 bg-white/80 p-1.5 rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300">
+        <h1 class="text-2xl font-bold text-[#473463]">Microbiote Intestinal</h1>
       </div>
     </div>
-  </template>
-  
-  <script setup lang="javascript"></script>
-  
-  <style src="./index.css"></style>
+
+    <!-- Main Content -->
+    <div class="p-4">
+      <!-- Introduction Card -->
+      <div class="bg-white/90 backdrop-blur rounded-3xl shadow-lg p-6 mb-4 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+        <h2 class="text-xl font-bold text-[#473463] mb-3">Le Microbiote Intestinal Humain</h2>
+        <p class="text-gray-700 leading-relaxed">
+          Du grec mikrós « petit », et biôtós, « vivre », le microbiote intestinal représente l'ensemble des microorganismes présents dans notre système digestif.
+        </p>
+      </div>
+
+      <!-- Key Facts Cards -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-6">
+        <div class="bg-white/90 backdrop-blur rounded-3xl shadow-lg p-6 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 border border-[#F29C94]/10">
+          <h3 class="text-lg font-bold text-[#473463] mb-3 flex items-center">
+            <span class="w-2 h-2 bg-[#F29C94] rounded-full mr-2"></span>
+            Composition
+          </h3>
+          <ul class="space-y-3">
+            <li class="flex items-center gap-3 text-gray-700 hover:text-[#473463] transition-colors">
+              <span class="text-[#F29C94] text-lg">•</span>
+              Archées
+            </li>
+            <li class="flex items-center gap-3 text-gray-700 hover:text-[#473463] transition-colors">
+              <span class="text-[#F29C94] text-lg">•</span>
+              Bactéries
+            </li>
+            <li class="flex items-center gap-3 text-gray-700 hover:text-[#473463] transition-colors">
+              <span class="text-[#F29C94] text-lg">•</span>
+              Levures
+            </li>
+            <li class="flex items-center gap-3 text-gray-700 hover:text-[#473463] transition-colors">
+              <span class="text-[#F29C94] text-lg">•</span>
+              Virus associés
+            </li>
+          </ul>
+        </div>
+
+        <div class="bg-white/90 backdrop-blur rounded-3xl shadow-lg p-6 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 border border-[#F29C94]/10">
+          <h3 class="text-lg font-bold text-[#473463] mb-3 flex items-center">
+            <span class="w-2 h-2 bg-[#F29C94] rounded-full mr-2"></span>
+            Fonctions Principales
+          </h3>
+          <ul class="space-y-3">
+            <li class="flex items-center gap-3 text-gray-700 hover:text-[#473463] transition-colors">
+              <span class="text-[#F29C94] text-lg">•</span>
+              Digestion des fibres
+            </li>
+            <li class="flex items-center gap-3 text-gray-700 hover:text-[#473463] transition-colors">
+              <span class="text-[#F29C94] text-lg">•</span>
+              Synthèse de vitamines
+            </li>
+            <li class="flex items-center gap-3 text-gray-700 hover:text-[#473463] transition-colors">
+              <span class="text-[#F29C94] text-lg">•</span>
+              Maturation immunitaire
+            </li>
+            <li class="flex items-center gap-3 text-gray-700 hover:text-[#473463] transition-colors">
+              <span class="text-[#F29C94] text-lg">•</span>
+              Régulation métabolique
+            </li>
+          </ul>
+        </div>
+
+        <div class="bg-white/90 backdrop-blur rounded-3xl shadow-lg p-6 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 border border-[#F29C94]/10">
+          <h3 class="text-lg font-bold text-[#473463] mb-3 flex items-center">
+            <span class="w-2 h-2 bg-[#F29C94] rounded-full mr-2"></span>
+            Impact sur la Santé
+          </h3>
+          <ul class="space-y-3">
+            <li class="flex items-center gap-3 text-gray-700 hover:text-[#473463] transition-colors">
+              <span class="text-[#F29C94] text-lg">•</span>
+              Système immunitaire
+            </li>
+            <li class="flex items-center gap-3 text-gray-700 hover:text-[#473463] transition-colors">
+              <span class="text-[#F29C94] text-lg">•</span>
+              Métabolisme
+            </li>
+            <li class="flex items-center gap-3 text-gray-700 hover:text-[#473463] transition-colors">
+              <span class="text-[#F29C94] text-lg">•</span>
+              Digestion
+            </li>
+            <li class="flex items-center gap-3 text-gray-700 hover:text-[#473463] transition-colors">
+              <span class="text-[#F29C94] text-lg">•</span>
+              Santé mentale
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Research Section -->
+      <div class="bg-white/90 backdrop-blur rounded-3xl shadow-lg p-6 mb-20 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 border border-[#F29C94]/10">
+        <h3 class="text-lg font-bold text-[#473463] mb-3 flex items-center">
+          <span class="w-2 h-2 bg-[#F29C94] rounded-full mr-2"></span>
+          Recherches Récentes
+        </h3>
+        <p class="text-gray-700 leading-relaxed">
+          Les avancées scientifiques depuis les années 2000 ont permis de mieux comprendre le rôle du microbiote dans notre santé, notamment grâce aux techniques de séquençage haut débit.
+        </p>
+      </div>
+    </div>
+  </div>
+</template>
+
+<script setup>
+// Component logic can be added here if needed
+</script>
