@@ -18,7 +18,7 @@ export default defineConfig({
 
    build: {
     rollupOptions: {
-      external: ['vue-chartjs']
+      external: ['vue-chartjs', 'chart.js']
     }
   }
 })
