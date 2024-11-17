@@ -14,9 +14,8 @@ export default defineConfig({
   },
   optimizeDeps: {
     include: ['vue', 'vuetify']
-  }
-
-   build: {
+  },  // Added comma here
+  build: {
     rollupOptions: {
       external: ['vue-chartjs', 'chart.js']
     }
