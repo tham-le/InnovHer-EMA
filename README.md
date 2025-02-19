@@ -236,7 +236,7 @@ The `backend/seed-script.py` file provides a convenient way to populate the data
 
 ## License
 
-This project is licensed under the MIT License.  See the `LICENSE` file (not provided in the original files, but implied) for details.
+This project is licensed under the MIT License. 
 
 ## Common Issues and Solutions
 
