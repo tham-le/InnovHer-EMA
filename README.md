@@ -112,7 +112,7 @@ tham-le-innovher-ema/
 1.  **Clone the Repository:**
 
     ```bash
-    git clone <repository_url>
+    git clone git@github.com:tham-le/InnovHer-EMA.git
     cd tham-le-innovher-ema/backend
     ```
 
